@@ -17,10 +17,10 @@ const Navbar = () => {
           <h1 className="text-4xl font-bold text-yellow-500">RentRide</h1>
         </div>
 
-        <ul className="flex items-center gap-2 font-bold">
+        <ul className="flex items-center gap-4 font-bold">
           <Link href="/">Home</Link>
           <Link href="/">Explore Cars</Link>
-          <Link href="/">Add Cars</Link>
+          <Link href="/addcars">Add Cars</Link>
           <Link href="/">My Bookings</Link>
         </ul>
         <div className="flex font-bold">
