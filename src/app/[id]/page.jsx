@@ -26,6 +26,23 @@ const DetailsPage = async ({ params }) => {
         <div>
           <div className=" space-y-3 ">
             <h1 className="text-4xl   font-semibold mt-3">{car.name}</h1>
+            <p className="w-max px-3 py-2 border-2 border-dotted border-gray-300 flex items-center justify-center gap-2">
+              {car.status}{" "}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="size-5 me-2 inline-block text-[#d7b65d]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </p>
             <p className="text-md text-neutral-500 max-w-120">
               {car.Description}
             </p>
@@ -44,7 +61,6 @@ const DetailsPage = async ({ params }) => {
                 {car.pickupLocation}
               </p>
             </div>
-            <p>{car.status}</p>
 
             <p className="text-3xl    mb-5">
               $
@@ -52,13 +68,12 @@ const DetailsPage = async ({ params }) => {
               /per day
             </p>
           </div>
-          <div className="flex justify-center">
-            <Link href={`/${car._id}`}>
-              <button className="btn border-3 border-dotted border-[#d7b65d]">
-                Book Now
-              </button>
-            </Link>
-          </div>
+
+          <Link href={`/${car._id}`}>
+            <button className="btn px-4 hover:bg-[#d7b65d] hover:text-neutral-600 bg-neutral-600 text-white">
+              Book Now !
+            </button>
+          </Link>
         </div>
       </div>
     </div>
