@@ -10,11 +10,12 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import { carList } from "@/lib/data";
 
 const AddCarsPage = () => {
-  const handleCarListing = (formdata) => {
+  const handleCarListing = async (formdata) => {
     const carData = Object.fromEntries(formdata.entries());
-    console.log(carData);
+    const carListData = await carList(carData);
   };
   return (
     <div className="container mx-auto">
