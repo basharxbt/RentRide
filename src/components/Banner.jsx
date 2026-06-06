@@ -15,8 +15,8 @@ const Banner = () => {
           Rent quality vehicles at competitive prices and enjoy a smooth,
           hassle-free booking experience for every trip
         </p>
-        <Link href="/explorecars" className="w-max">
-          <button className="btn  font-bold bg-yellow-500">Explore Cars</button>
+        <Link href="/explorecars" className="w-max  ">
+          <button className="btn  font-bold bg-[#d7b65d]">Explore Cars</button>
         </Link>
       </div>
       <div></div>
