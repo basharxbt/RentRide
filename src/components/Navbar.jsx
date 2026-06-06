@@ -23,8 +23,9 @@ const Navbar = () => {
           <Link href="/addcars">Add Cars</Link>
           <Link href="/">My Bookings</Link>
         </ul>
-        <div className="flex font-bold">
-          <Link href="/">Register</Link>
+        <div className="flex font-bold gap-4">
+          <Link href="/register">Register</Link>
+          <Link href="/login">Login</Link>
         </div>
       </div>
     </div>
