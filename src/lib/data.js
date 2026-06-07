@@ -26,3 +26,18 @@ export const carDetailsById = async (id) => {
   console.log(data);
   return data;
 };
+export const bookCar = async (bookInfo, car) => {
+  const res = await fetch(`http://localhost:3100/bookings`, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      bookInfo: bookInfo,
+      carInfo: car,
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+  return data;
+};

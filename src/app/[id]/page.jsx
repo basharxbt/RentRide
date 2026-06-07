@@ -1,3 +1,4 @@
+import { BookingModal } from "@/components/BookingModal";
 import { carDetailsById } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -69,11 +70,7 @@ const DetailsPage = async ({ params }) => {
             </p>
           </div>
 
-          <Link href={`/${car._id}`}>
-            <button className="btn px-4 hover:bg-[#d7b65d] hover:text-neutral-600 bg-neutral-600 text-white">
-              Book Now !
-            </button>
-          </Link>
+          <BookingModal car={car}></BookingModal>
         </div>
       </div>
     </div>
