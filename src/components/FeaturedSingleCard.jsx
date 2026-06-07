@@ -11,7 +11,7 @@ const FeaturedSingleCard = async ({ car }) => {
   return (
     <div className=" border-2 border-dotted border-gray-300 p-6 w-100">
       <Image
-        className="w-fit rounded-sm"
+        className="w-fit h-70 rounded-sm"
         src={car.imageUrl}
         width={400}
         height={400}

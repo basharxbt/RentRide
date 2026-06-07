@@ -1,3 +1,4 @@
+import ExploreAllCars from "@/components/ExploreAllCars";
 import { carCollections } from "@/lib/data";
 import React from "react";
 
@@ -6,12 +7,7 @@ const ExploreCars = async () => {
   console.log(allCars, "carss");
   return (
     <div className="min-h-screen">
-      {/* {allCars.map((car, index) => (
-        <div key={index}>
-          {" "}
-          <h1>hey</h1>
-        </div>
-      ))} */}
+      <ExploreAllCars></ExploreAllCars>
     </div>
   );
 };

@@ -14,7 +14,7 @@ export const carCollections = async () => {
   const res = await fetch("http://localhost:3100/carListed", {
     method: "GET",
   });
-  const data = res.json();
+  const data = await res.json();
   console.log(data);
   return data;
 };
