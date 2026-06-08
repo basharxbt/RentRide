@@ -12,6 +12,11 @@ import {
 } from "@heroui/react";
 
 const LoginPage = () => {
+  const googleSingin = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+  };
   const loginHandler = async (formData) => {
     const userInfo = Object.fromEntries(formData.entries());
     console.log(userInfo);
@@ -79,7 +84,10 @@ const LoginPage = () => {
             </Button>
           </div>
         </Form>
-        <button className="btn w-full bg-white text-black border-[#e5e5e5]">
+        <button
+          onClick={googleSingin}
+          className="btn w-full bg-white text-black border-[#e5e5e5]"
+        >
           <svg
             aria-label="Google logo"
             width="16"
