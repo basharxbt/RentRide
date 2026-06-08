@@ -8,7 +8,7 @@ const ExploreAllCars = async () => {
   //   console.log(allCars);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
       <div className="text-center my-8 ">
         <h1 className="text-4xl font-semibold my-3">
           Explore Our Premium Fleet

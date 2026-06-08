@@ -1,6 +1,8 @@
 import Banner from "@/components/Banner";
 import FeatureSection from "@/components/FeatureSection";
-import Image from "next/image";
+
+import Services from "@/components/Services";
+
 import { Bounce, ToastContainer } from "react-toastify";
 
 export default function Home() {
@@ -8,6 +10,8 @@ export default function Home() {
     <div>
       <Banner></Banner>
       <FeatureSection></FeatureSection>
+      <Services></Services>
+
       <ToastContainer
         position="top-center"
         autoClose={5000}

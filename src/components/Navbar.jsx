@@ -27,7 +27,7 @@ const Navbar = () => {
     window.location.reload();
   };
   return (
-    <div className=" ">
+    <div className="bg-black ">
       <div className=" container flex items-center justify-between">
         <div className="flex items-center">
           <Image
