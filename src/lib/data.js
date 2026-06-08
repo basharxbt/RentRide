@@ -41,3 +41,14 @@ export const bookCar = async (bookInfo, car) => {
   console.log(data);
   return data;
 };
+export const myBookCars = async () => {
+  const res = await fetch(`http://localhost:3100/bookings`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  const data = await res.json();
+  console.log(data);
+  return data;
+};

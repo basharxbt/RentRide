@@ -18,7 +18,7 @@ const FeatureSection = async () => {
       </div>
 
       <div className="grid grid-cols-3 gap-5 ">
-        {allCars.slice(0, 9).map((car) => {
+        {allCars.slice(0, 6).map((car) => {
           return (
             <FeaturedSingleCard key={car._id} car={car}></FeaturedSingleCard>
           );

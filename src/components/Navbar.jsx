@@ -21,7 +21,7 @@ const Navbar = () => {
           <Link href="/">Home</Link>
           <Link href="/explorecars">Explore Cars</Link>
           <Link href="/addcars">Add Cars</Link>
-          <Link href="/">My Bookings</Link>
+          <Link href="/mybookings">My Bookings</Link>
         </ul>
         <div className="flex font-bold gap-4">
           <Link href="/register">Register</Link>
