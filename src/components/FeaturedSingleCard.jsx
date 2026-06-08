@@ -41,7 +41,7 @@ const FeaturedSingleCard = async ({ car }) => {
         </p>
       </div>
       <div className="flex justify-center">
-        <Link href={`/${car._id}`}>
+        <Link href={`/details/${car._id}`}>
           <button className="btn border-3 border-dotted border-[#d7b65d]">
             View Details
           </button>
