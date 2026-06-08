@@ -1,5 +1,6 @@
 "use client";
-import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import { authClient, useSession } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -8,8 +9,10 @@ import {
   Form,
   Input,
   Label,
+  Skeleton,
   TextField,
 } from "@heroui/react";
+import { Bounce, toast } from "react-toastify";
 
 const LoginPage = () => {
   const googleSingin = async () => {
@@ -17,6 +20,12 @@ const LoginPage = () => {
       provider: "google",
     });
   };
+
+  const { data: season, isPending } = useSession();
+
+  if (season) {
+    redirect("/");
+  }
   const loginHandler = async (formData) => {
     const userInfo = Object.fromEntries(formData.entries());
     console.log(userInfo);
@@ -27,12 +36,29 @@ const LoginPage = () => {
     });
 
     if (error) {
-      console.error("Singin error:", error);
+      toast.error("🦄 Wow so easy!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
+
+      console.log(error.message);
       return;
+    }
+    if (data) {
+      window.location.reload("/");
+      redirect("/");
     }
 
     console.log("Singin success:", data);
   };
+
   return (
     <div className=" flex  justify-center items-center">
       <div className=" space-y-4 bg-gray-100 p-10 w-100 rounded-2xl ">

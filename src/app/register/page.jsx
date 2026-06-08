@@ -79,6 +79,11 @@ const RegisterPage = () => {
             return null;
           }}
         >
+          <TextField isRequired name="image" type="text">
+            <Label>Image Url</Label>
+            <Input placeholder="Enter your image url" />
+            <FieldError />
+          </TextField>
           <Label>Password</Label>
           <Input placeholder="Enter your password" />
           <Description>
