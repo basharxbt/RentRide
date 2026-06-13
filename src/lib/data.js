@@ -1,10 +1,10 @@
-export const carList = async (formData) => {
+export const carList = async (formData, email) => {
   const res = await fetch("http://localhost:3100/carListed", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(formData),
+    body: JSON.stringify({ formData, email }),
   });
   const data = res.json();
   return data;
@@ -15,7 +15,7 @@ export const carCollections = async () => {
     method: "GET",
   });
   const data = await res.json();
-  console.log(data);
+
   return data;
 };
 export const carDetailsById = async (id) => {
@@ -23,7 +23,7 @@ export const carDetailsById = async (id) => {
     method: "GET",
   });
   const data = await res.json();
-  console.log(data);
+
   return data;
 };
 export const bookCar = async (bookInfo, car) => {
@@ -38,7 +38,7 @@ export const bookCar = async (bookInfo, car) => {
     }),
   });
   const data = await res.json();
-  console.log(data);
+
   return data;
 };
 export const myBookCars = async () => {
@@ -49,6 +49,17 @@ export const myBookCars = async () => {
     },
   });
   const data = await res.json();
-  console.log(data);
+
+  return data;
+};
+
+export const deleteAddedCar = async (id) => {
+  const res = await fetch(`http://localhost:3100/carlisted/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  const data = await res.json();
   return data;
 };

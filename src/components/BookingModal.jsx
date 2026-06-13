@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "@/lib/auth-client";
 import { bookCar } from "@/lib/data";
 import { Car, Envelope } from "@gravity-ui/icons";
 import {
@@ -14,15 +15,22 @@ import {
 } from "@heroui/react";
 
 export function BookingModal({ car }) {
+  const { data: season } = useSession();
   const handleBooking = async (formdata) => {
     const bookInfo = Object.fromEntries(formdata.entries());
-    console.log(bookInfo);
-    const bookingCar = bookCar(bookInfo, car);
+    console.log(car, "car info", season);
+    const bookingCar = bookCar({
+      bookInfo: bookInfo,
+
+      carinfo: car,
+
+      email: season.user.email,
+    });
   };
   return (
     <Modal>
       <Modal.Trigger>
-        <button className="btn px-4 hover:bg-[#d7b65d] hover:text-neutral-600 bg-neutral-600 text-white">
+        <button className="py-2 px-4 hover:bg-[#d7b65d] hover:text-neutral-600 bg-neutral-600 text-white">
           Book Now !
         </button>
       </Modal.Trigger>

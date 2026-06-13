@@ -26,7 +26,7 @@ const FeatureSection = async () => {
       </div>
       <div className="flex justify-center">
         <Link href="/explorecars">
-          <button className="btn bg-neutral-600 text-white hover:text-neutral-700 my-3 hover:bg-[#d7b65d]">
+          <button className="px-4 py-2 bg-neutral-600 text-white hover:text-neutral-700 my-3 hover:bg-[#d7b65d]">
             Explore all
           </button>
         </Link>

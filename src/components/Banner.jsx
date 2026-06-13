@@ -16,7 +16,9 @@ const Banner = () => {
           hassle-free booking experience for every trip
         </p>
         <Link href="/explorecars" className="w-max  ">
-          <button className="btn  font-bold bg-[#d7b65d]">Explore Cars</button>
+          <button className="text-black px-4 py-2  font-bold bg-[#d7b65d]">
+            Explore Cars
+          </button>
         </Link>
       </div>
       <div></div>

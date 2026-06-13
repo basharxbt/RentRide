@@ -12,8 +12,7 @@ import {
 } from "@heroui/react";
 import { carList } from "@/lib/data";
 import { useSession } from "@/lib/auth-client";
-
-const AddCarsPage = () => {
+const AddedCarEdit = () => {
   const { data: season } = useSession();
   console.log(season);
   const handleCarListing = async (formdata) => {
@@ -35,11 +34,11 @@ const AddCarsPage = () => {
       <h1 className="text-6xl font-semibold text-center">Add Car</h1>
       <div className="bg-gray-100 p-5 rounded-4xl mt-5  w-full">
         <form action={handleCarListing} className="flex flex-col gap-4 w-full">
-          <TextField isRequired className="w-full" name="name" type="text">
+          <TextField className="w-full" name="name" type="text">
             <Label>Car Name</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="price">
+          <TextField className="w-full" name="price">
             <Label>Daily Rent Price</Label>
             <Input />
           </TextField>
@@ -47,7 +46,6 @@ const AddCarsPage = () => {
           {/* <Label></Label> */}
 
           <Select
-            isRequired
             aria-label="Car Type"
             name="carType"
             className=""
@@ -80,25 +78,24 @@ const AddCarsPage = () => {
             </Select.Popover>
           </Select>
 
-          <TextField isRequired className="w-full" name="imageUrl">
+          <TextField className="w-full" name="imageUrl">
             <Label>Image Url</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="seatCapacity">
+          <TextField className="w-full" name="seatCapacity">
             <Label>Seat Capacity</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="pickupLocation">
+          <TextField className="w-full" name="pickupLocation">
             <Label>Pickup Location</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="Description">
+          <TextField className="w-full" name="Description">
             <Label>Description</Label>
             <Input />
           </TextField>
 
           <Select
-            isRequired
             aria-label="status"
             name="status"
             className=""
@@ -123,12 +120,8 @@ const AddCarsPage = () => {
             </Select.Popover>
           </Select>
 
-          <Button
-            className="w-full bg-[#D7B65D] text-black"
-            type="submit"
-            slot="close"
-          >
-            Add Car
+          <Button type="submit" slot="close">
+            Send Message
           </Button>
         </form>
       </div>
@@ -136,4 +129,4 @@ const AddCarsPage = () => {
   );
 };
 
-export default AddCarsPage;
+export default AddedCarEdit;
