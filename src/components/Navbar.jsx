@@ -64,39 +64,63 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div className="flex gap-2">
-                  <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="">
-                      <div className=" rounded-md flex items-center gap-2 cursor-pointer ">
-                        {season?.user?.image && (
-                          <Image
-                            src={season.user.image}
-                            width={50}
-                            height={50}
-                            alt={season.user.name}
-                            className="rounded-full"
-                          ></Image>
-                        )}
-                        <div>{season.user.name}</div>
+                  <div className="relative group">
+                    <div className="flex items-center gap-3 cursor-pointer rounded-xl px-2 py-2 hover:bg-gray-100 transition">
+                      {season?.user?.image && (
+                        <Image
+                          src={season.user.image}
+                          width={45}
+                          height={45}
+                          alt={season.user.name}
+                          className="rounded-full border-2 border-[#d7b65d]"
+                        />
+                      )}
+
+                      <div className="hidden md:block">
+                        <p className="font-medium">{season.user.name}</p>
                       </div>
                     </div>
 
-                    <ul
-                      tabIndex="-1"
-                      className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-                    >
-                      <li>
-                        <Link href="/addcars">Add Car</Link>
-                      </li>
-                      <li>
-                        <Link href="/mybookings">My Bookings</Link>
-                      </li>
-                      <li>
-                        <Link href="/myaddedcars">My Added Cars</Link>
-                      </li>
-                      <li>
-                        <button onClick={singOutHandler}>Logout</button>
-                      </li>
-                    </ul>
+                    <div className="absolute right-0 top-full mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className="p-4 border-b">
+                        <p className="font-semibold">{season.user.name}</p>
+                        <p className="text-sm text-gray-500 truncate">
+                          {season.user.email}
+                        </p>
+                      </div>
+
+                      <div className="p-2">
+                        <Link
+                          href="/addcars"
+                          className="block px-4 py-3 rounded-lg hover:bg-gray-100 transition"
+                        >
+                          Add Car
+                        </Link>
+
+                        <Link
+                          href="/mybookings"
+                          className="block px-4 py-3 rounded-lg hover:bg-gray-100 transition"
+                        >
+                          My Bookings
+                        </Link>
+
+                        <Link
+                          href="/myaddedcars"
+                          className="block px-4 py-3 rounded-lg hover:bg-gray-100 transition"
+                        >
+                          My Added Cars
+                        </Link>
+
+                        <div className="my-2 border-t"></div>
+
+                        <button
+                          onClick={singOutHandler}
+                          className="w-full text-left px-4 py-3 rounded-lg text-red-500 hover:bg-red-50 transition"
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}

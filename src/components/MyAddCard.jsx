@@ -4,7 +4,8 @@ import { AlertDialog, Button } from "@heroui/react";
 import { useSession } from "@/lib/auth-client";
 import { Card } from "@heroui/react";
 import Image from "next/image";
-import { deleteAddedCar } from "@/lib/data";
+import { deleteAddedCar, updateAddedCar } from "@/lib/data";
+import Link from "next/link";
 
 const MyAddCard = ({ car }) => {
   const { data: season } = useSession();
@@ -18,34 +19,36 @@ const MyAddCard = ({ car }) => {
 
   console.log(car, "car from singlecar");
 
-  if (car.formData) {
-    if (car?.formData?.email == season?.user?.email) {
+  if (car) {
+    if (car.email == season?.user?.email) {
       return (
         <div className="flex flex-col items-center">
           <div className=" min-w-300 ">
             <Card className=" items-stretch md:flex-row">
               <div className="  rounded-2xl ">
                 <Image
-                  src={car.formData.imageUrl}
+                  className="h-40"
+                  src={car.imageUrl}
                   width={200}
                   height={200}
-                  alt={car.formData.name}
+                  alt={car.name}
                 ></Image>
               </div>
 
               <div className="flex flex-1 flex-col gap-3">
                 <Card.Header className="gap-1">
                   <div className="flex justify-between">
-                    <Card.Title className="text-3xl">
-                      {car?.formData?.name}
-                    </Card.Title>
+                    <Card.Title className="text-3xl">{car.name}</Card.Title>
 
                     <div className="flex gap-3 items-center">
                       <div>
                         {" "}
-                        <button className="px-4 py-1 bg-neutral-700 text-white rounded-4xl cursor-pointer">
-                          Edit
-                        </button>
+                        <Link href={`/myaddedcars/${car._id}`}>
+                          {" "}
+                          <button className="px-4 py-1 bg-neutral-700 text-white rounded-4xl cursor-pointer">
+                            Edit
+                          </button>
+                        </Link>
                       </div>
                       <AlertDialog>
                         <Button variant="danger">Delete </Button>
@@ -85,13 +88,13 @@ const MyAddCard = ({ car }) => {
                     </div>
                   </div>
 
-                  <p className="my-2">Car Type: {car?.formData?.carType}</p>
+                  <p className="my-2">Car Type: {car.carType}</p>
 
                   <span className=" mt-1  text-foreground">
-                    Pickup Location: {car?.formData?.pickupLocation}
+                    Pickup Location: {car.pickupLocation}
                   </span>
                   <span className=" mt-1 text-2xl text-foreground">
-                    ${car?.formData?.price}/ per day
+                    ${car.price}/ per day
                   </span>
                 </Card.Header>
                 <Card.Footer className="mt-auto flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">

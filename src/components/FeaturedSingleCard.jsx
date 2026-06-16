@@ -8,7 +8,6 @@ import { MdAirlineSeatReclineNormal } from "react-icons/md";
 import { TbCategory } from "react-icons/tb";
 
 const FeaturedSingleCard = async ({ car }) => {
-  console.log(car.formData?.imageUrl);
   return (
     <div>
       <div className=" border-2 border-dotted border-gray-300 p-6 w-100">

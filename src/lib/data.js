@@ -1,12 +1,13 @@
-export const carList = async (formData, email) => {
+export const carList = async (formData) => {
   const res = await fetch("http://localhost:3100/carListed", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ formData, email }),
+    body: JSON.stringify(formData),
   });
   const data = res.json();
+  console.log(data);
   return data;
 };
 
@@ -60,6 +61,19 @@ export const deleteAddedCar = async (id) => {
       "Content-type": "application/json",
     },
   });
+
+  const data = await res.json();
+  return data;
+};
+export const updateAddedCar = async (id, updatedData) => {
+  const res = await fetch(`http://localhost:3100/carlisted/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify(updatedData),
+  });
+
   const data = await res.json();
   return data;
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { updateAddedCar } from "@/lib/data";
 import {
   Button,
   Description,
@@ -10,37 +10,28 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
-import { carList } from "@/lib/data";
-import { useSession } from "@/lib/auth-client";
-
-const AddCarsPage = () => {
-  const { data: season } = useSession();
-  console.log(season);
+const UpdatedAddedCar = ({ id, car }) => {
   const handleCarListing = async (formdata) => {
+    console.log(car);
     const carData = Object.fromEntries(formdata.entries());
     console.log(carData);
-    const carListData = await carList({
-      name: carData.name,
-      price: carData.price,
-      carType: carData.carType,
-      imageUrl: carData.imageUrl,
-      seatCapacity: carData.seatCapacity,
-      pickupLocation: carData.pickupLocation,
-      status: carData.status,
-      description: carData.description,
-      email: season?.user?.email,
-    });
+    const carUpdateData = await updateAddedCar(id, carData);
   };
   return (
-    <div className="container mx-auto">
-      <h1 className="text-6xl font-semibold text-center">Add Car</h1>
+    <div>
+      <h1 className="text-6xl font-semibold text-center">Update Car</h1>
       <div className="bg-gray-100 p-5 rounded-4xl mt-5  w-full">
         <form action={handleCarListing} className="flex flex-col gap-4 w-full">
-          <TextField isRequired className="w-full" name="name" type="text">
+          <TextField
+            defaultValue={car.name}
+            className="w-full"
+            name="name"
+            type="text"
+          >
             <Label>Car Name</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="price">
+          <TextField defaultValue={car.price} className="w-full" name="price">
             <Label>Daily Rent Price</Label>
             <Input />
           </TextField>
@@ -48,11 +39,11 @@ const AddCarsPage = () => {
           {/* <Label></Label> */}
 
           <Select
-            isRequired
             aria-label="Car Type"
             name="carType"
             className=""
             placeholder="Select one"
+            defaultValue={car.carType}
           >
             <Label>Car Type</Label>
             <Select.Trigger>
@@ -81,25 +72,41 @@ const AddCarsPage = () => {
             </Select.Popover>
           </Select>
 
-          <TextField isRequired className="w-full" name="imageUrl">
+          <TextField
+            defaultValue={car.imageUrl}
+            className="w-full"
+            name="imageUrl"
+          >
             <Label>Image Url</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="seatCapacity">
+          <TextField
+            defaultValue={car.seatCapacity}
+            className="w-full"
+            name="seatCapacity"
+          >
             <Label>Seat Capacity</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="pickupLocation">
+          <TextField
+            defaultValue={car.pickupLocation}
+            className="w-full"
+            name="pickupLocation"
+          >
             <Label>Pickup Location</Label>
             <Input />
           </TextField>
-          <TextField isRequired className="w-full" name="description">
+          <TextField
+            defaultValue={car.description}
+            className="w-full"
+            name="description"
+          >
             <Label>Description</Label>
             <Input />
           </TextField>
 
           <Select
-            isRequired
+            defaultValue={car.status}
             aria-label="status"
             name="status"
             className=""
@@ -124,12 +131,8 @@ const AddCarsPage = () => {
             </Select.Popover>
           </Select>
 
-          <Button
-            className="w-full bg-[#D7B65D] text-black"
-            type="submit"
-            slot="close"
-          >
-            Add Car
+          <Button className="w-full bg-neutral-700" type="submit" slot="close">
+            Update Car
           </Button>
         </form>
       </div>
@@ -137,4 +140,4 @@ const AddCarsPage = () => {
   );
 };
 
-export default AddCarsPage;
+export default UpdatedAddedCar;
