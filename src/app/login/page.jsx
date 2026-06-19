@@ -13,6 +13,8 @@ import {
   TextField,
 } from "@heroui/react";
 import { Bounce, toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
+import Link from "next/link";
 
 const LoginPage = () => {
   const googleSingin = async () => {
@@ -22,7 +24,6 @@ const LoginPage = () => {
   };
 
   const { data: season, isPending } = useSession();
-
   if (season) {
     redirect("/");
   }
@@ -36,7 +37,7 @@ const LoginPage = () => {
     });
 
     if (error) {
-      toast.error("🦄 Wow so easy!", {
+      toast.error("Invalid email or password", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -52,16 +53,69 @@ const LoginPage = () => {
       return;
     }
     if (data) {
+      toast.success("Login successful! Welcome back.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
       window.location.reload("/");
       redirect("/");
     }
 
     console.log("Singin success:", data);
   };
+  if (isPending) {
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "#fffaf0",
+        }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              width: "50px",
+              height: "50px",
+              border: "5px solid #eee",
+              borderTop: "5px solid #d7b65d",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+              margin: "0 auto",
+            }}
+          />
+
+          <p style={{ marginTop: "15px", color: "#333" }}>Loading...</p>
+
+          <style>{`
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+        `}</style>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className=" flex  justify-center items-center">
-      <div className=" space-y-4 bg-gray-100 p-10 w-100 rounded-2xl ">
+    <div className=" flex h-screen bg-gray-100 justify-center items-center">
+      <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-lg">
+        <div className="text-center space-y-2 mb-8">
+          <h1 className="text-3xl  font-bold text-gray-900">Welcome Back</h1>
+          <p className="text-gray-500">
+            Sign in to access your RentRide account
+          </p>
+        </div>
         <Form action={loginHandler} className="flex flex-col gap-4 ">
           <TextField
             isRequired
@@ -80,12 +134,12 @@ const LoginPage = () => {
           </TextField>
           <TextField
             isRequired
-            minLength={8}
+            minLength={6}
             name="password"
             type="password"
             validate={(value) => {
-              if (value.length < 8) {
-                return "Password must be at least 8 characters";
+              if (value.length < 6) {
+                return "Password must be at least 6 characters";
               }
               if (!/[A-Z]/.test(value)) {
                 return "Password must contain at least one uppercase letter";
@@ -99,50 +153,41 @@ const LoginPage = () => {
             <Label>Password</Label>
             <Input placeholder="Enter your password" />
             <Description>
-              Must be at least 8 characters with 1 uppercase and 1 number
+              Must be at least 6 characters with 1 uppercase and 1 number
             </Description>
             <FieldError />
           </TextField>
           <div className="flex gap-2">
-            <Button className="btn bg-yellow-500 w-full" type="submit">
-              <Check />
+            <Button
+              className="btn bg-black rounded-md text-white w-full"
+              type="submit"
+            >
               Login
             </Button>
           </div>
         </Form>
+        <div className="flex items-center my-6">
+          <div className="flex-1 border-t"></div>
+          <span className="px-3 text-sm text-gray-500">OR</span>
+          <div className="flex-1 border-t"></div>
+        </div>
         <button
           onClick={googleSingin}
-          className="btn w-full bg-white text-black border-[#e5e5e5]"
+          type="button"
+          className="w-full flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-xl font-medium hover:bg-gray-50 transition"
         >
-          <svg
-            aria-label="Google logo"
-            width="16"
-            height="16"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <g>
-              <path d="m0 0H512V512H0" fill="#fff"></path>
-              <path
-                fill="#34a853"
-                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-              ></path>
-              <path
-                fill="#4285f4"
-                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-              ></path>
-              <path
-                fill="#fbbc02"
-                d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"
-              ></path>
-              <path
-                fill="#ea4335"
-                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-              ></path>
-            </g>
-          </svg>
-          Login with Google
+          <FcGoogle size={22} />
+          Continue with Google
         </button>
+        <p className="text-center text-gray-600 mt-6">
+          Don't have an account?{" "}
+          <Link
+            href="/register"
+            className="font-semibold text-black hover:underline"
+          >
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

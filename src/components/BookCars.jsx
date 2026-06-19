@@ -30,7 +30,7 @@ const BookCars = async ({ car }) => {
               {car.bookInfo.carinfo.name}
             </Card.Title>
 
-            <p className="my-2">Car Type: {car.bookInfo.carinfo.carType}</p>
+            <p className="my-2">Booking Date: {car.bookInfo?.bookingDate}</p>
 
             <span className=" mt-1  text-foreground">
               Pickup Location: {car.bookInfo.carinfo.pickupLocation}

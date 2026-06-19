@@ -71,7 +71,7 @@ const WorkingSystem = () => {
               <div key={step.number} className="relative">
                 <div className="hidden md:flex absolute top-10 -right-5 z-10 items-center justify-center w-10"></div>
 
-                <div className="bg-white border border-[#d7b65d47] rounded-2xl p-7 h-full shadow-sm hover:shadow-md transition-shadow duration-200">
+                <div className="  bg-gray-100 rounded-2xl p-7 h-full shadow-sm hover:shadow-md transition-shadow duration-200">
                   <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-blue-50 text-[#d7b65d] text-xs font-semibold mb-5">
                     {step.number}
                   </span>

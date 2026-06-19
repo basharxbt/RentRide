@@ -10,27 +10,30 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import { Bounce, toast } from "react-toastify";
 const UpdatedAddedCar = ({ id, car }) => {
   const handleCarListing = async (formdata) => {
     console.log(car);
     const carData = Object.fromEntries(formdata.entries());
     console.log(carData);
     const carUpdateData = await updateAddedCar(id, carData);
+    toast.success(" Car updated successfully!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Bounce,
+    });
   };
   return (
-    <div>
-      <h1 className="text-6xl font-semibold text-center">Update Car</h1>
-      <div className="bg-gray-100 p-5 rounded-4xl mt-5  w-full">
+    <div className="container mx-auto flex  items-center justify-center">
+      <div className="bg-gray-100  p-5 max-w-lg w-full rounded-4xl mt-5  ">
+        <h1 className="text-4xl font-semibold text-center mb-10">Update Car</h1>
         <form action={handleCarListing} className="flex flex-col gap-4 w-full">
-          <TextField
-            defaultValue={car.name}
-            className="w-full"
-            name="name"
-            type="text"
-          >
-            <Label>Car Name</Label>
-            <Input />
-          </TextField>
           <TextField defaultValue={car.price} className="w-full" name="price">
             <Label>Daily Rent Price</Label>
             <Input />
@@ -80,14 +83,7 @@ const UpdatedAddedCar = ({ id, car }) => {
             <Label>Image Url</Label>
             <Input />
           </TextField>
-          <TextField
-            defaultValue={car.seatCapacity}
-            className="w-full"
-            name="seatCapacity"
-          >
-            <Label>Seat Capacity</Label>
-            <Input />
-          </TextField>
+
           <TextField
             defaultValue={car.pickupLocation}
             className="w-full"

@@ -16,11 +16,12 @@ const DetailsPage = async ({ params }) => {
     headers: await headers(),
   });
 
+  console.log(new Date().toDateString(), "this is the current date");
   const car = await carDetailsById(id, token);
   console.log(car);
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-around ">
+    <div className="container mx-auto h-screen bg-[#d7b65d3d] flex  items-center justify-center">
+      <div className="flex gap-20 bg-gray-100 p-5 rounded-2xl items-center justify-center">
         <Image
           className="w-fit rounded-sm"
           src={car.imageUrl}
@@ -28,7 +29,7 @@ const DetailsPage = async ({ params }) => {
           height={600}
           alt={car.name}
         ></Image>
-        <div>
+        <div className="flex flex-col items-center justify-center">
           <div className=" space-y-3 ">
             <h1 className="text-4xl   font-semibold mt-3">{car.name}</h1>
             <p className="w-max px-3 py-2 border-2 border-dotted border-gray-300 flex items-center justify-center gap-2">
@@ -49,7 +50,7 @@ const DetailsPage = async ({ params }) => {
               </svg>
             </p>
             <p className="text-md text-neutral-500 max-w-120">
-              {car?.description}
+              {car.Description}
             </p>
 
             <div className="flex gap-5 text-md pt-4">
@@ -69,14 +70,14 @@ const DetailsPage = async ({ params }) => {
 
             <p className="text-3xl    mb-5">
               $
-              <span className="text-[#d7b65d] font-semibold ">
-                {car.price || car.formData.price}
-              </span>
+              <span className="text-[#d7b65d] font-semibold ">{car.price}</span>
               /per day
             </p>
           </div>
 
-          <BookingModal car={car}></BookingModal>
+          <div className="w-full mt-5 flex items-center justify-center">
+            <BookingModal car={car}></BookingModal>
+          </div>
         </div>
       </div>
     </div>

@@ -52,7 +52,7 @@ const FeaturedSingleCard = async ({ car }) => {
         </div>
         <div className="flex justify-center">
           <Link href={`/details/${car._id || car.formData._id}`}>
-            <button className="px-2 py-2 border-3 border-dotted border-[#d7b65d]">
+            <button className="px-2 py-2 border-3 border-dotted border-[#d7b65d] hover:bg-neutral-900 hover:text-white transition cursor-pointer hover:border-none rounded-md">
               View Details
             </button>
           </Link>

@@ -13,6 +13,7 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import { toast } from "react-toastify";
 
 export function BookingModal({ car }) {
   const { data: season } = useSession();
@@ -25,12 +26,19 @@ export function BookingModal({ car }) {
       carinfo: car,
 
       email: season.user.email,
+
+      bookingDate: new Date().toDateString(),
     });
+
+    toast.success("Car booked successfully!");
   };
   return (
     <Modal>
       <Modal.Trigger>
-        <button className="py-2 px-4 hover:bg-[#d7b65d] hover:text-neutral-600 bg-neutral-600 text-white">
+        <button
+          slot="close"
+          className="py-2 cursor-pointer px-4 hover:bg-[#d7b65d] hover:text-neutral-600 bg-neutral-600 text-white"
+        >
           Book Now !
         </button>
       </Modal.Trigger>
@@ -87,7 +95,7 @@ export function BookingModal({ car }) {
                     <Input placeholder="Enter your message" />
                   </TextField>
                   <button
-                    className="w-full btn bg-[#d7b65d] rounded-sm"
+                    className="w-full px-4 py-2 cursor-pointer bg-[#d7b65d] rounded-sm "
                     type="submit"
                     slot="close"
                   >
