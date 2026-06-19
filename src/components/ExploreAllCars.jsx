@@ -1,11 +1,9 @@
 import { carCollections } from "@/lib/data";
 import React from "react";
 import FeaturedSingleCard from "./FeaturedSingleCard";
-import Link from "next/link";
 
 const ExploreAllCars = async () => {
   const allCars = await carCollections();
-  console.log(allCars);
 
   return (
     <div className="container mx-auto ">

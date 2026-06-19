@@ -6,8 +6,7 @@ export const carList = async (formData) => {
     },
     body: JSON.stringify(formData),
   });
-  const data = res.json();
-  console.log(data);
+
   return data;
 };
 
@@ -19,9 +18,12 @@ export const carCollections = async () => {
 
   return data;
 };
-export const carDetailsById = async (id) => {
+export const carDetailsById = async (id, token) => {
   const res = await fetch(`http://localhost:3100/carListed/${id}`, {
     method: "GET",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   });
   const data = await res.json();
 
@@ -42,11 +44,12 @@ export const bookCar = async (bookInfo, car) => {
 
   return data;
 };
-export const myBookCars = async () => {
+export const myBookCars = async (token) => {
   const res = await fetch(`http://localhost:3100/bookings`, {
     method: "GET",
     headers: {
       "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   });
   const data = await res.json();

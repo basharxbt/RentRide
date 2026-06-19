@@ -12,6 +12,8 @@ import {
 } from "@heroui/react";
 import { carList } from "@/lib/data";
 import { useSession } from "@/lib/auth-client";
+import { Flip, toast } from "react-toastify";
+import { redirect } from "next/navigation";
 
 const AddCarsPage = () => {
   const { data: season } = useSession();
@@ -30,6 +32,20 @@ const AddCarsPage = () => {
       description: carData.description,
       email: season?.user?.email,
     });
+
+    toast.success(" Car added successfully!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      transition: Flip,
+    });
+
+    redirect("/myaddedcars");
   };
   return (
     <div className="container mx-auto">

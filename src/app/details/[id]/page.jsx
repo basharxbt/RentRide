@@ -5,14 +5,18 @@ import Link from "next/link";
 import React from "react";
 
 import { HiLocationMarker } from "react-icons/hi";
-
+import { headers } from "next/headers";
 import { MdAirlineSeatReclineNormal } from "react-icons/md";
 import { TbCategory } from "react-icons/tb";
+import { auth } from "@/lib/auth";
 const DetailsPage = async ({ params }) => {
   const { id } = await params;
   console.log(id);
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
 
-  const car = await carDetailsById(id);
+  const car = await carDetailsById(id, token);
   console.log(car);
   return (
     <div className="container mx-auto">
