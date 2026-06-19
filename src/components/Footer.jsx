@@ -11,8 +11,8 @@ import {
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-black text-white mt-16">
-        <div className="max-w-6xl mx-auto px-6 py-12 grid gap-10 md:grid-cols-4">
+      <div className="bg-black text-white mt-16">
+        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 gap-10 md:grid-cols-4">
           <div>
             <h1 className="text-xl font-bold text-[#d7b65d]">RentRide</h1>
             <p className="text-sm text-gray-400 mt-4 leading-relaxed">
@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 py-4 text-center text-sm text-gray-500">
           © 2026 RentRide. All rights reserved.
         </div>
-      </footer>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { BookingModal } from "@/components/BookingModal";
-import { carDetailsById } from "@/lib/data";
+import { carDetailsById, myBookCars } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -16,8 +16,9 @@ const DetailsPage = async ({ params }) => {
     headers: await headers(),
   });
 
-  console.log(new Date().toDateString(), "this is the current date");
   const car = await carDetailsById(id, token);
+  const bookingCars = await myBookCars(token);
+  console.log(bookingCars, "this is the booking cars from details page");
   console.log(car);
   return (
     <div className="container mx-auto h-screen bg-[#d7b65d3d] flex  items-center justify-center">

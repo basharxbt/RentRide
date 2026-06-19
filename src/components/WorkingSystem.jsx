@@ -48,7 +48,7 @@ const WorkingSystem = () => {
   ];
   return (
     <section className="py-20 px-6 bg-white">
-      <div className="container mx-auto">
+      <div className="md:container px-8 md:px-0 mx-auto">
         <div className="text-center">
           <div className="mb-14">
             <p className="text-xl font-semibold tracking-widest text-[#d7b65d] uppercase mb-2">

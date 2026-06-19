@@ -8,7 +8,7 @@ const FeatureSection = async () => {
   //   console.log(allCars);
 
   return (
-    <div className="container mx-auto">
+    <div className="md:container px-8 md:px-0 mx-auto">
       <div className="text-center my-8 ">
         <h1 className="text-4xl font-semibold">Featured Categories</h1>
         <p>
@@ -17,7 +17,7 @@ const FeatureSection = async () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-5 ">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 ">
         {allCars.slice(0, 6).map((car) => {
           return (
             <FeaturedSingleCard key={car._id} car={car}></FeaturedSingleCard>

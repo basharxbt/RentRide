@@ -28,19 +28,21 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className=" container flex items-center justify-between">
-        <div className="flex items-center">
-          <Image
-            src="/rent2.jpg"
-            alt="Logo Image"
-            width={100}
-            height={100}
-            className="rounded-full"
-          ></Image>
-          <h1 className="text-4xl font-bold text-yellow-500">RentRide</h1>
+      <div className=" md:container px-8 md:px-0 flex items-center justify-between">
+        <div className="flex items-center cursor-pointer ">
+          <Link className="flex items-center gap-2" href="/">
+            <Image
+              src="/rent2.jpg"
+              alt="Logo Image"
+              width={100}
+              height={100}
+              className="rounded-full"
+            ></Image>
+            <h1 className="text-4xl font-bold text-yellow-500">RentRide</h1>
+          </Link>
         </div>
 
-        <ul className="flex items-center gap-4 font-bold">
+        <ul className="flex items-center gap-4 font-bold hidden lg:flex">
           <Link href="/">Home</Link>
           <Link href="/explorecars">Explore Cars</Link>
           <Link href="/addcars">Add Cars</Link>
@@ -76,7 +78,7 @@ const Navbar = () => {
                         />
                       )}
 
-                      <div className="hidden md:block">
+                      <div className=" md:block">
                         <p className="font-medium">{season.user.name}</p>
                       </div>
                     </div>
