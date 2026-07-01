@@ -19,12 +19,9 @@ export const carCollections = async () => {
 
   return data;
 };
-export const carDetailsById = async (id, token) => {
+export const carDetailsById = async (id) => {
   const res = await fetch(`http://localhost:3100/carListed/${id}`, {
     method: "GET",
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
   });
   const data = await res.json();
 
@@ -76,6 +73,18 @@ export const updateAddedCar = async (id, updatedData) => {
       "Content-type": "application/json",
     },
     body: JSON.stringify(updatedData),
+  });
+
+  const data = await res.json();
+  return data;
+};
+export const deleteBookingCar = async (id, token) => {
+  const res = await fetch(`http://localhost:3100/bookings/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 
   const data = await res.json();

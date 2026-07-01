@@ -6,7 +6,7 @@ const ExploreAllCars = async () => {
   const allCars = await carCollections();
 
   return (
-    <div className="md:container px-8 md:px-0 mx-auto ">
+    <div className=" container mx-auto ">
       <div className="text-center my-8 ">
         <h1 className="text-4xl font-semibold my-3">
           Explore Our Premium Fleet

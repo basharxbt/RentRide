@@ -16,15 +16,15 @@ const DetailsPage = async ({ params }) => {
     headers: await headers(),
   });
 
-  const car = await carDetailsById(id, token);
+  const car = await carDetailsById(id);
   const bookingCars = await myBookCars(token);
   console.log(bookingCars, "this is the booking cars from details page");
   console.log(car);
   return (
-    <div className="container mx-auto h-screen bg-[#d7b65d3d] flex  items-center justify-center">
-      <div className="flex gap-20 bg-gray-100 p-5 rounded-2xl items-center justify-center">
+    <div className="container mx-auto min-h-screen bg-[#d7b65d3d] flex  items-center justify-center">
+      <div className="flex flex-col my-10 lg:flex-row gap-20 bg-gray-100 p-5 rounded-2xl items-center justify-center">
         <Image
-          className="w-fit rounded-sm"
+          className="w-full h-full object-cover rounded-sm"
           src={car.imageUrl}
           width={600}
           height={600}

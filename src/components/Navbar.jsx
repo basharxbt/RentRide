@@ -28,7 +28,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className=" md:container px-8 md:px-0 flex items-center justify-between">
+      <div className=" container px-8  flex items-center justify-between">
         <div className="flex items-center cursor-pointer ">
           <Link className="flex items-center gap-2" href="/">
             <Image

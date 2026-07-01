@@ -34,11 +34,11 @@ const MyAddCard = ({ car }) => {
 
   return (
     <div className="flex flex-col  items-center">
-      <div className=" min-w-300 ">
-        <Card className=" items-stretch md:flex-row">
+      <div className=" w-full ">
+        <Card className=" items-stretch flex flex-col md:flex-row">
           <div className="  rounded-2xl ">
             <Image
-              className="h-40"
+              className="h-40 w-full object-cover rounded-2xl md:h-full md:w-48"
               src={car.imageUrl}
               width={200}
               height={200}
@@ -46,9 +46,9 @@ const MyAddCard = ({ car }) => {
             ></Image>
           </div>
 
-          <div className="flex flex-1 flex-col gap-3">
+          <div className="flex flex-col-reverse gap-3">
             <Card.Header className="gap-1">
-              <div className="flex justify-between">
+              <div className="flex flex-col-reverse  md:flex-row justify-between gap-5 flex-wrap">
                 <Card.Title className="text-3xl">{car.name}</Card.Title>
 
                 <div className="flex gap-3 items-center">

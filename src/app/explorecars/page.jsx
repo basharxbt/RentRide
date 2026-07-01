@@ -6,7 +6,7 @@ const ExploreCars = async () => {
   const allCars = await carCollections();
   console.log(allCars, "carss");
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <ExploreAllCars></ExploreAllCars>
     </div>
   );

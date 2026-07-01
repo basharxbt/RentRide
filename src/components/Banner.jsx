@@ -4,10 +4,10 @@ import React from "react";
 const Banner = () => {
   return (
     <div
-      className="h-screen bg-cover bg-center grid grid-cols-1 md:grid-cols-2 "
+      className="min-h-screen bg-cover bg-center grid grid-cols-1 md:grid-cols-2 "
       style={{ backgroundImage: "url('/banner1.jpg')" }}
     >
-      <div className="md:container lg:container px-8 md:px-0 mx-auto text-white flex justify-center gap-4 flex-col ">
+      <div className="md:container lg:container px-8  mx-auto text-white flex justify-center gap-4 flex-col ">
         <div className="flex flex-col items-center justify-center">
           <h1 className="md:text-7xl text-3xl font-bold ">
             Find the Perfect Car for Every Adventure

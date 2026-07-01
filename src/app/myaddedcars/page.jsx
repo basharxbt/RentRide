@@ -38,7 +38,7 @@ const MyAddedCars = async () => {
     );
   }
   return (
-    <div className="h-screen container space-y-5 mx-auto mt-1">
+    <div className="h-screen md:container space-y-5 mx-auto mt-1">
       {addedCars.map((car) => (
         <MyAddCard key={car._id} car={car}></MyAddCard>
       ))}

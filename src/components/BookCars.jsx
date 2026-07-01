@@ -4,9 +4,13 @@ import { headers } from "next/headers";
 
 import Image from "next/image";
 import Link from "next/link";
+import { FaDeleteLeft } from "react-icons/fa6";
+import DeleteBookBtn from "./DeleteBookBtn";
 const BookCars = async ({ car }) => {
-  console.log(car.bookInfo);
-
+  console.log(car, "this is the car from book cars component");
+  const { token } = await auth.api.getToken({
+    headers: await headers(),
+  });
   // const session = await auth.api.getSession({
   //   headers: await headers(),
   // });
@@ -44,6 +48,9 @@ const BookCars = async ({ car }) => {
               <span className="text-xs text-muted">{}</span>
             </div>
           </Card.Footer>
+        </div>
+        <div className="flex justify-end h-max items-center">
+          <DeleteBookBtn carId={car._id} token={token}></DeleteBookBtn>
         </div>
       </Card>
     </div>

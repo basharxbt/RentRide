@@ -33,7 +33,7 @@ const Services = () => {
     },
   ];
   return (
-    <div className="md:container px-8 md:px-0 mx-auto mt-10 ">
+    <div className="md:container px-8  mx-auto mt-10 ">
       <div className="flex flex-col items-center gap-4">
         <p className="text-md font-bold bg-gray-100 p-2 px-4 rounded-full text-center w-max">
           Our Services
